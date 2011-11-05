@@ -1,11 +1,11 @@
 require 'minitest/autorun'
 require 'property'
 
-class PropertiesBlockTest < MiniTest::Unit::TestCase
+class DSLTest < MiniTest::Unit::TestCase
   
   def setup
-    Property::PropertiesBlock.send :public, :data_block
-    @pb = Property::PropertiesBlock.new
+    Property::DSL.send :public, :data_block
+    @pb = Property::DSL.new
   end
   
   def test_data_block_with_block
