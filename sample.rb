@@ -20,9 +20,9 @@ end
 
 properties 'sort' do
   data do
-    (0..rand(100)).map { rand(1_000_000) }
+    (rand(10) - 1).times.map { rand(1000) }
   end
-
+  
   property 'has the same size' do |data|
     assert_equal data.size, sort(data).size
   end
