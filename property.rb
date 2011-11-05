@@ -7,17 +7,12 @@ module Property
       properties_block = PropertiesBlock.new
       properties_block.instance_eval(&block)
       Class.new(MiniTest::Unit::TestCase).class_eval do
-        properties_block.properties.each do |message, block|
-          properties_block.data_blocks.each do |data_block|
-            TESTS_PER_PROPERTY.times do |i|
-              define_method "test_#{message} (#{data_block.object_id}/#{i})" do
-                data = data_block.call
-                begin
-                  instance_exec(data, &block)
-                rescue MiniTest::Assertion => e
-                  raise MiniTest::Assertion.new("Property #{message.inspect} is falsable for data #{data.inspect}\n#{e.message}")
-                end
-              end
+        properties_block.each do |message, test_block, data|
+          define_method "test_property: #{message.inspect} with #{data.inspect}" do
+            begin
+              instance_exec(data, &test_block)
+            rescue MiniTest::Assertion => e
+              raise MiniTest::Assertion.new("Property #{message.inspect} is falsable for data #{data.inspect}\n#{e.message}")
             end
           end
         end
@@ -26,7 +21,6 @@ module Property
   end
   
   class PropertiesBlock
-    attr_reader :properties, :data_blocks
     
     def initialize
       @properties = []
@@ -40,6 +34,17 @@ module Property
     def property(message, &block)
       @properties << [message, block]
     end
+    
+    def each(&block)
+      @properties.each do |message, test_block|
+        @data_blocks.each do |data_block|
+          TESTS_PER_PROPERTY.times do
+            block.call(message, test_block, data_block.call)
+          end
+        end
+      end
+    end
+    
   end
 end
 
