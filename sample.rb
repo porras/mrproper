@@ -9,7 +9,7 @@ properties 'double' do
   data { rand(1_000_000) }
   
   property 'is the same as adding twice' do |data|
-    data + data == double(data)
+    assert_equal data + data, double(data)
   end
 end
 
@@ -23,20 +23,28 @@ properties 'sort' do
   end
 
   property 'has the same size' do |data|
-    data.size == sort(data).size
+    assert_equal data.size, sort(data).size
   end
   
   property 'idempotency' do |data|
-    sort(data) == sort(sort(data))
+    assert_equal sort(data), sort(sort(data))
   end
   
   property 'is a permutation of the original list' do |data|
-    is_permutation?(data, sort(data))
+    assert_permutation data, sort(data)
   end
   
   property 'is ordered' do |data|
-    is_ordered?(sort(data))
+    assert_ordered sort(data)
   end
+end
+
+def assert_ordered(array)
+  assert is_ordered?(array), "Expected #{array.inspect} to be ordered"
+end
+
+def assert_permutation(array1, array2)
+  assert is_permutation?(array1, array2), "Expected #{array1.inspect} to be a permutation of #{array2.inspect}"
 end
 
 def is_ordered?(array)

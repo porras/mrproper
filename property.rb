@@ -10,9 +10,11 @@ module Property
         properties_block.properties.each do |message, block|
           TESTS_PER_PROPERTY.times do |i|
             define_method "test_#{message} (#{i})" do
-              instance_exec do
-                data = properties_block.data_block.call
-                assert block.call(data), "Property '#{message}' is false with data #{data.inspect}"
+              data = properties_block.data_block.call
+              begin
+                instance_exec(data, &block)
+              rescue MiniTest::Assertion => e
+                raise MiniTest::Assertion.new("Property #{message.inspect} is falsable for data #{data.inspect}\n#{e.message}")
               end
             end
           end
