@@ -7,10 +7,23 @@ def double(i)
 end
 
 properties 'double' do
-  data { rand(1_000_000) }
+  data Integer
+  data Float
   
   property 'is the same as adding twice' do |data|
     assert_equal data + data, double(data)
+  end
+end
+
+def reverse(string)
+  string.reverse
+end
+
+properties 'reverse' do
+  data String
+  
+  property 'should reverse itself' do |data|
+    assert_equal data, reverse(reverse(data))
   end
 end
 
@@ -19,13 +32,9 @@ def sort(array)
 end
 
 properties 'sort' do
-  data do
-    (rand(10) - 1).times.map { rand(1000) }
-  end
-  
-  data do
-    (rand(10) - 1).times.map { String.random(rand(10) - 1) }
-  end
+
+  data [Integer]
+  data [String]
   
   property 'has the same size' do |data|
     assert_equal data.size, sort(data).size

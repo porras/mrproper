@@ -1,3 +1,5 @@
+require 'string_extensions'
+
 def assert_ordered(array)
   assert is_ordered?(array), "Expected #{array.inspect} to be ordered"
 end
@@ -16,12 +18,4 @@ def is_permutation?(array1, array2)
   array1.all? do |item|
     array2.delete_at(array2.index(item))
   end && array2.empty?
-end
-
-class String
-  @@chars ||= ('a'..'z').to_a + ('A'..'Z').to_a
-  
-  def self.random(size = 8)
-    (0..size).map{ @@chars[rand(@@chars.length)] }.join
-  end
 end
