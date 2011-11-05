@@ -1,6 +1,5 @@
-require 'minitest/autorun'
-require 'test_helper'
 require 'property'
+require 'properties_helper'
 
 def double(i)
   i * 2

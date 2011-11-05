@@ -1,7 +1,9 @@
 require 'minitest/autorun'
-require 'test_helper'
+require 'properties_helper'
 
 class TestIsOrdered < MiniTest::Unit::TestCase
+  
+  include PropertiesHelper
   
   def test_empty
     assert is_ordered?([])

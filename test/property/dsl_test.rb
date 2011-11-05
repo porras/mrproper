@@ -1,7 +1,10 @@
 require 'minitest/autorun'
+require 'test_helper'
 require 'property'
 
 class DSLTest < MiniTest::Unit::TestCase
+  
+  include TestHelper
   
   def setup
     Property::DSL.send :public, :data_block
@@ -126,12 +129,6 @@ class DSLTest < MiniTest::Unit::TestCase
       end
     end
     assert_changes { b.call.size }
-  end
-  
-  private
-  
-  def assert_changes(&block)
-    assert 10.times.map(&block).uniq.size > 1
   end
   
 end
