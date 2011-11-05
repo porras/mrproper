@@ -23,6 +23,10 @@ properties 'sort' do
     (rand(10) - 1).times.map { rand(1000) }
   end
   
+  data do
+    (rand(10) - 1).times.map { String.random(rand(10) - 1) }
+  end
+  
   property 'has the same size' do |data|
     assert_equal data.size, sort(data).size
   end
