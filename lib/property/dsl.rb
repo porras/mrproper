@@ -4,6 +4,8 @@ module Property
   
   class DSL
     
+    attr_reader :properties, :data_blocks
+    
     def initialize
       @properties = []
       @data_blocks = []
@@ -15,16 +17,6 @@ module Property
     
     def property(message, &block)
       @properties << [message, block]
-    end
-    
-    def each(&block)
-      @properties.each do |message, test_block|
-        @data_blocks.each do |data_block|
-          TESTS_PER_PROPERTY.times do
-            block.call(message, test_block, data_block.call)
-          end
-        end
-      end
     end
     
     private
