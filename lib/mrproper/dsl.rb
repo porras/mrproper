@@ -1,4 +1,4 @@
-module Property
+module MrProper
   
   TESTS_PER_PROPERTY = 100
   

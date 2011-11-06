@@ -1,7 +1,7 @@
-module Property
+module MrProper
   
   def properties(name, &block)
-    dsl = Property::DSL.new
+    dsl = MrProper::DSL.new
     dsl.instance_eval(&block)
     Class.new(MiniTest::Unit::TestCase).class_eval do
       include PropertiesHelper if const_defined?(:PropertiesHelper)

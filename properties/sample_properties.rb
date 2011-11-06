@@ -1,4 +1,4 @@
-require 'property'
+require 'mrproper'
 require 'properties_helper'
 
 def double(i)

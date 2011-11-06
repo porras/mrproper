@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    property (0.0.1)
+    mrproper (0.0.1)
 
 GEM
   remote: http://rubygems.org/
@@ -12,5 +12,5 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  property!
+  mrproper!
   rake

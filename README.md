@@ -1,17 +1,17 @@
-# Property
+# MrProper
 
-Property is a [MiniTest](http://rubydoc.info/stdlib/minitest/1.9.2/frames)-based library to do Property Based Testing a la [Haskell](http://haskell.org/haskellwiki/Haskell)'s [QuickCheck](http://hackage.haskell.org/package/QuickCheck).
+MrProper is a [MiniTest](http://rubydoc.info/stdlib/minitest/1.9.2/frames)-based library to do Property Based Testing a la [Haskell](http://haskell.org/haskellwiki/Haskell)'s [QuickCheck](http://hackage.haskell.org/package/QuickCheck).
 
 Property Based Testing is an alternative approach to unit testing for testing functional style functions/methods. Instead of using examples and testing the return value of your function for each example, you:
 
 1. Define the kind of data your function/method is supposed to accept
 2. Define predicates (properties) your function/method is supposed to comply with
 
-Then Property uses that info to randomly check lots of test cases so that you can find extra edge cases you might have forgotten in your unit tests or implementation.
+Then MrProper uses that info to randomly check lots of test cases so that you can find extra edge cases you might have forgotten in your unit tests or implementation.
 
-In order to do so, Property provides a very simple DSL, with just thre methods, `properties`, `data` and `property`. For example, we could describe a `double` function in terms of properties:
+In order to do so, MrProper provides a very simple DSL, with just three methods, `properties`, `data` and `property`. For example, we could describe a `double` function in terms of properties:
 
-    require 'property'
+    require 'mrproper'
     
     properties 'double' do
       data Integer
@@ -39,7 +39,7 @@ After implementing `double` (we'll leave that as an exercise `;)`), we run the p
     
 Only one test runs, but notice the insane number of assertions: a lot of random `Integer` and `Float` values generated for you.
 
-If we happen to have a buggy `double` implementation which fails for numbers greater than 20 (we're crappy developers, thats why we want tests!), Property will tell you the first case it finds that proves the property false:
+If we happen to have a buggy `double` implementation which fails for numbers greater than 20 (we're crappy developers, thats why we want tests!), MrProper will tell you the first case it finds that proves the property false:
 
     def double(i)
       return -666 if i > 20
@@ -91,6 +91,10 @@ In case this is not enough, you can just use a block and do whatever you want to
     data do
       rand > 0.5 ? Wadus.new(rand(9)) : FooBar.new(rand(9))
     end
+
+## Todo
+
+* Make it work in other rubies than 1.9.3
 
 ## License
 

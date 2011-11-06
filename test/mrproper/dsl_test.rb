@@ -1,14 +1,14 @@
 require 'minitest/autorun'
 require 'test_helper'
-require 'property'
+require 'mrproper'
 
 class DSLTest < MiniTest::Unit::TestCase
   
   include TestHelper
   
   def setup
-    Property::DSL.send :public, :data_block
-    @pb = Property::DSL.new
+    MrProper::DSL.send :public, :data_block
+    @pb = MrProper::DSL.new
   end
   
   def test_data_block_with_block
