@@ -1,4 +1,4 @@
-# MrProper
+# MrProper [![Build Status](https://secure.travis-ci.org/porras/mrproper.png)](http://travis-ci.org/porras/mrproper)
 
 MrProper is a Test::Unit-based library to do Property Based Testing a la [Haskell](http://haskell.org/haskellwiki/Haskell)'s [QuickCheck](http://hackage.haskell.org/package/QuickCheck).
 
