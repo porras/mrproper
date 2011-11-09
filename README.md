@@ -92,6 +92,14 @@ In case this is not enough, you can just use a block and do whatever you want to
       rand > 0.5 ? Wadus.new(rand(9)) : FooBar.new(rand(9))
     end
 
+## Further reading
+
+* [Slides](http://mrproper-railscamp.heroku.com/) of a quick and dirty pesentation about MrProper at [railscamp-es](https://rails-camp-es.jottit.com/) '2011. Those slides eventually became this README's first version
+* [Chapter](http://book.realworldhaskell.org/read/testing-and-quality-assurance.html) of the book *“Real World Haskell”* talking about QuickCheck
+* [RushCheck](https://github.com/IKEGAMIDaisuke/rushcheck), an old (and apparently abandoned) implementation of this idea in Ruby
+* [rqc](https://github.com/seancribbs/rqc), a Ruby port of [QC.js](http://willowbend.cx/2009/12/05/qc-js-quickcheck-javascript/) (a property-based testing framework in Javascript)
+* [ProTest](http://www.protest-project.eu/index.html), another implementation in Erlang
+
 ## License
 
 Released under the [MIT license](http://github.com/porras/property/blob/master/LICENSE)
