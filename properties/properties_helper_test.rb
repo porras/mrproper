@@ -1,7 +1,7 @@
-require 'minitest/autorun'
+require 'test/unit'
 require 'properties_helper'
 
-class TestIsOrdered < MiniTest::Unit::TestCase
+class TestIsOrdered < Test::Unit::TestCase
   
   include PropertiesHelper
   

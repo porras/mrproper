@@ -1,6 +1,6 @@
 # MrProper
 
-MrProper is a [MiniTest](http://rubydoc.info/stdlib/minitest/1.9.2/frames)-based library to do Property Based Testing a la [Haskell](http://haskell.org/haskellwiki/Haskell)'s [QuickCheck](http://hackage.haskell.org/package/QuickCheck).
+MrProper is a Test::Unit-based library to do Property Based Testing a la [Haskell](http://haskell.org/haskellwiki/Haskell)'s [QuickCheck](http://hackage.haskell.org/package/QuickCheck).
 
 Property Based Testing is an alternative approach to unit testing for testing functional style functions/methods. Instead of using examples and testing the return value of your function for each example, you:
 
@@ -24,7 +24,7 @@ In order to do so, MrProper provides a very simple DSL, with just three methods,
 
 ## Running the properties
 
-After implementing `double` (we'll leave that as an exercise `;)`), we run the properties as a regular MiniTest test file:
+After implementing `double` (we'll leave that as an exercise `;)`), we run the properties as a regular test file:
 
     $ testrb double_properties.rb
     Run options: 
@@ -91,10 +91,6 @@ In case this is not enough, you can just use a block and do whatever you want to
     data do
       rand > 0.5 ? Wadus.new(rand(9)) : FooBar.new(rand(9))
     end
-
-## Todo
-
-* Make it work in other rubies than 1.9.3
 
 ## License
 

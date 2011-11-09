@@ -1,8 +1,8 @@
-require 'minitest/autorun'
+require 'test/unit'
 require 'test_helper'
 require 'mrproper'
 
-class DSLTest < MiniTest::Unit::TestCase
+class DSLTest < Test::Unit::TestCase
   
   include TestHelper
   

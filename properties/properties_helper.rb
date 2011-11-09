@@ -19,3 +19,5 @@ module PropertiesHelper
     end && array2.empty?
   end
 end
+
+include PropertiesHelper

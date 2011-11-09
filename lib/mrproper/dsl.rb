@@ -29,7 +29,7 @@ module MrProper
         if spec.size == 1
           Proc.new { rand(20).times.map { data_block(spec.first).call } }
         else
-          Proc.new { spec.map { |spec| data_block(spec).call }}
+          Proc.new { spec.map { |s| data_block(s).call }}
         end
       when Hash
         Proc.new do
