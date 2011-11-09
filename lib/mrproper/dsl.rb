@@ -32,10 +32,20 @@ module MrProper
           Proc.new { spec.map { |s| data_block(s).call }}
         end
       when Hash
-        Proc.new do
-          {}.tap do |h|
-            rand(20).times.each do
-              h[data_block(spec.keys.first).call] = data_block(spec.values.first).call
+        if spec.size == 1
+          Proc.new do
+            {}.tap do |h|
+              rand(20).times.each do
+                h[data_block(spec.keys.first).call] = data_block(spec.values.first).call
+              end
+            end
+          end
+        else
+          Proc.new do
+            {}.tap do |h|
+              spec.each do |k, v|
+                h[data_block(k).call] = data_block(v).call
+              end
             end
           end
         end

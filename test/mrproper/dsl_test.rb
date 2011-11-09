@@ -131,4 +131,15 @@ class DSLTest < Test::Unit::TestCase
     assert_changes { b.call.size }
   end
   
+  def test_data_block_with_hash_of_two_elements
+    b = @pb.data_block({:first => Integer, :second => Float})
+    assert_kind_of Proc, b
+    assert_kind_of Hash, b.call
+    assert_equal 2, b.call.size
+    assert_kind_of Integer, b.call[:first]
+    assert_kind_of Float, b.call[:second]
+    assert_changes { b.call[:first] }
+    assert_changes { b.call[:second] }
+  end
+  
 end

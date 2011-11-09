@@ -85,6 +85,11 @@ In addition to plain class names, we can feed `data` with more or less complex e
                                 # parser thinks we're defining a block `;)`)
     data({String => [Integer]}) # generates hashes whose keys are strings
                                 # and whose values are arrays of integers
+    data({:first => String,
+          :second => Integer})  # generates a hash with two keys, :first and
+                                # :second, each one with an String or Integer
+                                # value (this is specially useful for testing
+                                # methods with more than one parameter)
 
 In case this is not enough, you can just use a block and do whatever you want to generate the data:
 
