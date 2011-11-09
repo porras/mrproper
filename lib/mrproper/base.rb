@@ -8,8 +8,7 @@ module MrProper
       dsl.properties.each do |message, test_block|
         define_method "test_property: #{message.inspect}" do
           dsl.data_blocks.each do |data_block|
-            TESTS_PER_PROPERTY.times do
-              data = data_block.call
+            data_block.data.each do |data|
               begin
                 instance_exec(data, &test_block)
               rescue Test::Unit::AssertionFailedError, MiniTest::Assertion => e
