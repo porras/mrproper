@@ -45,11 +45,20 @@ module MrProper
             end
           end
         end
+      when Range
+        case @spec.begin
+        when Integer
+          Proc.new { @spec.begin + rand(@spec.end - @spec.begin) }
+        when Float
+          Proc.new { @spec.begin + rand * (@spec.end - @spec.begin) }
+        else
+          Proc.new { @spec }
+        end
       when Class
         if @spec == Integer
-          Proc.new { rand(1000) - 500 }
+          DataBlock.new(-500..500).to_proc
         elsif @spec == Float
-          Proc.new { rand * 10 - 10 }
+          DataBlock.new(-5.0..5.0).to_proc
         elsif @spec == String
           Proc.new { String.random(rand(10)) }
         elsif @spec == Symbol

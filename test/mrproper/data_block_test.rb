@@ -137,4 +137,26 @@ class DataBlockTest < Test::Unit::TestCase
     assert_changes { b.call[:second] }
   end
   
+  def test_data_block_with_range_of_integers
+    b = MrProper::DataBlock.new(-10..-5)
+    
+    assert_kind_of Integer, b.call
+    assert_changes { b.call }
+    10.times do
+      assert_in_range b.call, -10..-5
+    end
+  end
+  
+  def test_data_block_with_range_of_floats
+    b = MrProper::DataBlock.new(-30.0..-27.0)
+    
+    assert_kind_of Float, b.call
+    assert_changes { b.call }
+    10.times do
+      assert_in_range b.call, -30..-27
+    end
+    assert b.data.size > 10 # arbitrary number to check it's not converting to
+                            # integer and generating just -30, -29, -28, -27
+  end
+  
 end

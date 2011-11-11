@@ -77,6 +77,8 @@ In addition to plain class names, we can feed `data` with more or less complex e
                                 # or [-44, "eB"]
     data [[Float]]              # generates arrays of arrays of floats
                                 # such as [[0.12, 3.41], [-2.31]]
+    data (1..10)                # generates integers between 1 and 10
+    data (0.0..10.0)            # generates floats between 1 and 10
     data({Symbol => String})    # generates hashes whose keys are symbols
                                 # and whose values are strings such as
                                 # {:tR=>"m", :aSKnsndwWK=>"QUrGwAAh"}
@@ -91,7 +93,7 @@ In addition to plain class names, we can feed `data` with more or less complex e
                                 # value (this is specially useful for testing
                                 # methods with more than one parameter)
 
-In case this is not enough, you can just use a block and do whatever you want to generate the data:
+You can combine this cases ad infinitum, but in case this is not enough, you can just use a block and do whatever you want to generate the data:
 
     data do
       rand > 0.5 ? Wadus.new(rand(9)) : FooBar.new(rand(9))
