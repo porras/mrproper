@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name              = "mrproper"
-  s.version           = "0.0.3"
+  s.version           = "0.0.4"
   s.date              = Date.today
   s.summary           = "Property Based Testing library"
   s.author            = ["Sergio Gil", "Mari Carmen Gutiérrez"]
