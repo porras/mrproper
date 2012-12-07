@@ -51,3 +51,24 @@ properties 'sort' do
     assert_ordered sort(data)
   end
 end
+
+def add(a, b)
+  a + b
+end
+
+properties 'add' do
+  data({:a => Integer, :b => Integer, :c => Integer})
+  data({:a => Float, :b => Float, :c => Float})
+  
+  property 'commutative' do |data|
+    assert_close add(data[:a], data[:b]), add(data[:b], data[:a])
+  end
+  
+  property 'associative' do |data|
+    assert_close add(add(data[:a], data[:b]), data[:c]), add(data[:a], add(data[:b], data[:c]))
+  end
+  
+  property 'zero' do |data|
+    assert_close add(data[:a], 0), data[:a]
+  end
+end

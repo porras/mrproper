@@ -18,6 +18,10 @@ module PropertiesHelper
       array2.delete_at(array2.index(item))
     end && array2.empty?
   end
+  
+  def assert_close(a, b, delta = 0.000000001)
+    assert (a - b).abs < delta
+  end
 end
 
 include PropertiesHelper
