@@ -109,7 +109,7 @@ You can combine this cases ad infinitum, but in case this is not enough, you can
 
 ## License
 
-Released under the [MIT license](http://github.com/porras/property/blob/master/LICENSE)
+Released under the [MIT license](http://github.com/porras/mrproper/blob/master/LICENSE)
 
 ## Credits
 
