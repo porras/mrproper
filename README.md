@@ -78,7 +78,7 @@ In addition to plain class names, we can feed `data` with more or less complex e
     data [[Float]]              # generates arrays of arrays of floats
                                 # such as [[0.12, 3.41], [-2.31]]
     data (1..10)                # generates integers between 1 and 10
-    data (0.0..10.0)            # generates floats between 1 and 10
+    data (0.0..10.0)            # generates floats between 0 and 10
     data({Symbol => String})    # generates hashes whose keys are symbols
                                 # and whose values are strings such as
                                 # {:tR=>"m", :aSKnsndwWK=>"QUrGwAAh"}
