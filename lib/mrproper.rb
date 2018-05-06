@@ -1,4 +1,4 @@
-require 'test/unit'
+require 'minitest/autorun'
 require 'mrproper/base'
 require 'mrproper/dsl'
 require 'mrproper/data_block'
