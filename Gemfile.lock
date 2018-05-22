@@ -2,10 +2,12 @@ PATH
   remote: .
   specs:
     mrproper (0.0.4)
+      minitest
 
 GEM
-  remote: http://rubygems.org/
+  remote: https://rubygems.org/
   specs:
+    minitest (5.11.3)
     rake (10.0.2)
 
 PLATFORMS
@@ -14,3 +16,6 @@ PLATFORMS
 DEPENDENCIES
   mrproper!
   rake
+
+BUNDLED WITH
+   1.16.1

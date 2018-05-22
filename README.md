@@ -12,11 +12,11 @@ Then MrProper uses that info to randomly check lots of test cases so that you ca
 In order to do so, MrProper provides a very simple DSL, with just three methods, `properties`, `data` and `property`. For example, we could describe a `double` function in terms of properties:
 
     require 'mrproper'
-    
+
     properties 'double' do
       data Integer
       data Float
-      
+
       property 'is the same as adding twice' do |data|
         assert_equal data + data, double(data)
       end
@@ -27,7 +27,7 @@ In order to do so, MrProper provides a very simple DSL, with just three methods,
 After implementing `double` (we'll leave that as an exercise `;)`), we run the properties as a regular test file:
 
     $ testrb double_properties.rb
-    Run options: 
+    Run options:
 
     # Running tests:
 
@@ -36,7 +36,7 @@ After implementing `double` (we'll leave that as an exercise `;)`), we run the p
     Finished tests in 0.001625s, 615.3846 tests/s, 123076.9231 assertions/s.
 
     1 tests, 200 assertions, 0 failures, 0 errors, 0 skips
-    
+
 Only one test runs, but notice the insane number of assertions: a lot of random `Integer` and `Float` values generated for you.
 
 If we happen to have a buggy `double` implementation which fails for numbers greater than 20 (we're crappy developers, thats why we want tests!), MrProper will tell you the first case it finds that proves the property false:
@@ -49,7 +49,7 @@ If we happen to have a buggy `double` implementation which fails for numbers gre
 And run the properties again:
 
     $ testrb double_properties.rb
-    Run options: 
+    Run options:
 
     # Running tests:
 
@@ -64,7 +64,7 @@ And run the properties again:
       Actual: -666
 
     1 tests, 3 assertions, 1 failures, 0 errors, 0 skips
-    
+
 ## Data generation DSL
 
 In addition to plain class names, we can feed `data` with more or less complex expressions to define data structures:
