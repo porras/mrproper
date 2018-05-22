@@ -1,3 +1,7 @@
+**NOTE:** this is _abandonware_. It was a nice project to learn about the topic and fun code to write, especially the data generation DSL. But it hasn't been updated in a long while, it's not very feature rich and doesn't integrate very nicely with other test libraries. The best option nowadays to do property based testing in Ruby is clearly [rantly](https://github.com/rantly-rb/rantly). I encourage you to take a look!
+
+And now, for archeology purposes, here is the original README and code:
+
 # MrProper [![Build Status](https://secure.travis-ci.org/porras/mrproper.png)](http://travis-ci.org/porras/mrproper)
 
 MrProper is a Test::Unit-based library to do Property Based Testing a la [Haskell](http://haskell.org/haskellwiki/Haskell)'s [QuickCheck](http://hackage.haskell.org/package/QuickCheck).
@@ -11,16 +15,18 @@ Then MrProper uses that info to randomly check lots of test cases so that you ca
 
 In order to do so, MrProper provides a very simple DSL, with just three methods, `properties`, `data` and `property`. For example, we could describe a `double` function in terms of properties:
 
-    require 'mrproper'
+```ruby
+require 'mrproper'
 
-    properties 'double' do
-      data Integer
-      data Float
+properties 'double' do
+  data Integer
+  data Float
 
-      property 'is the same as adding twice' do |data|
-        assert_equal data + data, double(data)
-      end
-    end
+  property 'is the same as adding twice' do |data|
+    assert_equal data + data, double(data)
+  end
+end
+```
 
 ## Running the properties
 
@@ -41,10 +47,12 @@ Only one test runs, but notice the insane number of assertions: a lot of random 
 
 If we happen to have a buggy `double` implementation which fails for numbers greater than 20 (we're crappy developers, thats why we want tests!), MrProper will tell you the first case it finds that proves the property false:
 
-    def double(i)
-      return -666 if i > 20
-      i * 2
-    end
+```ruby
+def double(i)
+  return -666 if i > 20
+  i * 2
+end
+```
 
 And run the properties again:
 
@@ -95,9 +103,11 @@ In addition to plain class names, we can feed `data` with more or less complex e
 
 You can combine this cases ad infinitum, but in case this is not enough, you can just use a block and do whatever you want to generate the data:
 
-    data do
-      rand > 0.5 ? Wadus.new(rand(9)) : FooBar.new(rand(9))
-    end
+```ruby
+data do
+  rand > 0.5 ? Wadus.new(rand(9)) : FooBar.new(rand(9))
+end
+```
 
 ## Further reading
 
