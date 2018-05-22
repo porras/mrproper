@@ -1,25 +1,25 @@
 module MrProper
-  
+
   class DataBlock
-    
+
     EXAMPLES_PER_PROPERTY = 200
-    
+
     def initialize(spec = nil, &block)
       @spec = spec
       @block = block
     end
-    
+
     def data
       EXAMPLES_PER_PROPERTY.times.map { call }.uniq
     end
-    
+
     def call
       to_proc.call
     end
-    
+
     def to_proc
       return @block if @block
-      
+
       case @spec
       when Array
         if @spec.size == 1
@@ -70,7 +70,7 @@ module MrProper
         Proc.new { @spec }
       end
     end
-    
+
   end
-  
+
 end
